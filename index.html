@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF Premium Panel</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #080808;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.container {
+  max-width: 430px;
+  margin: 25px auto;
+  background: #151515;
+  border: 1px solid #ff3434;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 0 25px #ff202033;
+}
+
+h1 {
+  text-align: center;
+  color: #ff3333;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.section {
+  background: #202020;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 14px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #ff3030;
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  background: #ff3030;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-weight: bold;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #ff3030;
+}
+
+.status {
+  color: #39e878;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.warning {
+  color: #aaa;
+  text-align: center;
+  font-size: 11px;
+  margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔥 FF PREMIUM</h1>
+<p class="subtitle">FREE FIRE STYLE CONTROL PANEL</p>
+
+<div class="section">
+<h3>🎮 Demo Features</h3>
+
+<div class="item">
+<span>🎯 Auto Headshot</span>
+<input type="checkbox" onchange="updateStatus()">
+</div>
+
+<div class="item">
+<span>⚡ Aimlock</span>
+<input type="checkbox" onchange="updateStatus()">
+</div>
+
+<div class="item">
+<span>🔥 Aimbot</span>
+<input type="checkbox" onchange="updateStatus()">
+</div>
+
+<div class="item">
+<span>💥 Damage Hack</span>
+<input type="checkbox" onchange="updateStatus()">
+</div>
+</div>
+
+<div class="section">
+<h3>⚙️ Sensitivity Settings</h3>
+
+<p>General: <span id="v1">90</span></p>
+<input type="range" min="0" max="200" value="90"
+oninput="v1.innerText=this.value">
+
+<p>Red Dot: <span id="v2">85</span></p>
+<input type="range" min="0" max="200" value="85"
+oninput="v2.innerText=this.value">
+
+<p>Scope: <span id="v3">75</span></p>
+<input type="range" min="0" max="200" value="75"
+oninput="v3.innerText=this.value">
+</div>
+
+<button onclick="resetPanel()">RESET SETTINGS</button>
+
+<div class="status" id="status">
+● PANEL READY
+</div>
+
+<p class="warning">
+Educational visual demo only. No connection to Free Fire.
+</p>
+
+</div>
+
+<script>
+function updateStatus() {
+  document.getElementById("status").innerText =
+    "● DEMO SETTINGS UPDATED";
+}
+
+function resetPanel() {
+  document.querySelectorAll('input[type="checkbox"]')
+    .forEach(x => x.checked = false);
+
+  const ranges = document.querySelectorAll('input[type="range"]');
+  const defaults = [90, 85, 75];
+
+  ranges.forEach((x, i) => {
+    x.value = defaults[i];
+    document.getElementById("v" + (i + 1)).innerText =
+      defaults[i];
+  });
+
+  document.getElementById("status").innerText =
+    "● SETTINGS RESET";
+}
+</script>
+
+</body>
+</html>
